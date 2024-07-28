@@ -72,7 +72,7 @@ const UpdateNote = ({ note, onDelete, onUpdate }) => {
           </Button>
         </Box>
       ) : (
-        <Box>{note.content}</Box>
+        <Box  >{note.content}</Box>
       )}
     </Box>
   );

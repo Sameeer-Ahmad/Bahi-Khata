@@ -23,8 +23,7 @@ const GetNotes = () => {
 
   const handleDeleteNote = async (id) => {
     try {
-      await axios.delete(`https://bahi-khata.onrender.com
-        /notes/delete/${id}`);
+      await axios.delete(`https://bahi-khata.onrender.com/notes/delete/${id}`);
       fetchNotes();
     } catch (error) {
       console.log(error);
@@ -49,7 +48,7 @@ const GetNotes = () => {
       {notes.length === 0 ? (
         <Box>No notes available. Please add a note.</Box>
       ) : (
-        <Box display="flex" flexWrap={"wrap"}  bg={"gray.100"} p={4}>
+        <Box display="flex"  bg={"gray.100"} p={4}>
           {notes.map((note) => (
             <Flex
               key={note._id}
