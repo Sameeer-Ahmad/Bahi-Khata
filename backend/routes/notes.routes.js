@@ -5,11 +5,7 @@ const noteRouter = express.Router();
 noteRouter.post("/add", async (req, res) => {
   try {
     const { title, content } = req.body;
-    if (!title || !content) {
-      return res
-        .status(400)
-        .send({ message: "Title and content are required" });
-    }
+    
     const newNote = new Note({ title, content });
     await newNote.save();
     res.status(201).send({ message: "Note created", note: newNote });
@@ -22,7 +18,7 @@ noteRouter.post("/add", async (req, res) => {
 noteRouter.get("/", async (req, res) => {
   try {
     const notes = await Note.find();
-    res.status(200).send({ message: "Notes fetched", notes });
+    res.status(200).send( notes );
   } catch (err) {
     res.status(500).send({ msg: "Failed to fetch notes", err });
   }
