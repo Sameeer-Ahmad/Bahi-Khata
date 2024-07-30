@@ -30,26 +30,31 @@ const UpdateNote = ({ note, onDelete, onUpdate }) => {
   };
 
   return (
-    <Box p={5}>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Box>
+    <Box
+      p={4}
+      minWidth="220px"
+      maxWidth={"220px"}
+      minHeight="110px"
+    >
+      <Box display="flex" justifyContent="space-between" >
+        <Box >
           {isEditing ? (
             <Editable defaultValue={note.title} onChange={setNewTitle}>
               <EditablePreview />
               <EditableInput />
             </Editable>
           ) : (
-            <Box fontWeight="bold" mb={2}>
+            <Box fontWeight="bold" mb={2}  minWidth="100px"
+            maxWidth={"100px"}>
               {note.title}
             </Box>
           )}
         </Box>
-        <Box mr={-4} mt={-4}>
+        <Box  mr={-6}>
           <IconButton
             icon={<EditIcon />}
             onClick={() => setIsEditing(!isEditing)}
             mr={2}
-            ml={8}
             aria-label="Edit note"
           />
           <IconButton
@@ -59,20 +64,23 @@ const UpdateNote = ({ note, onDelete, onUpdate }) => {
           />
         </Box>
       </Box>
-      {isEditing ? (
-        <Box>
+      <Box mb={2} >
+        {isEditing ? (
           <Textarea
             value={newContent}
             onChange={(e) => setNewContent(e.target.value)}
             placeholder="Enter note content"
-            mb={4}
+            mb={2}
+            resize="none"
           />
-          <Button colorScheme="blue" onClick={handleUpdate}>
-            Update Note
-          </Button>
-        </Box>
-      ) : (
-        <Box  >{note.content}</Box>
+        ) : (
+          <Box>{note.content}</Box>
+        )}
+      </Box>
+      {isEditing && (
+        <Button colorScheme="blue" onClick={handleUpdate}>
+          Update Note
+        </Button>
       )}
     </Box>
   );

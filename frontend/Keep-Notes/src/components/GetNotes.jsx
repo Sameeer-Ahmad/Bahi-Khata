@@ -39,16 +39,16 @@ const GetNotes = () => {
   }, []);
 
   return (
-    <Box p={5} maxW="container.lg" mx="auto">
+    <Box p={3} maxW="container.lg" mx="auto">
       <Heading mb={6} size="lg" textAlign="center">
         My Notes
       </Heading>
       <AddNote onNoteAdded={() => fetchNotes()} />
       <Divider my={6} />
       {notes.length === 0 ? (
-        <Box>No notes available. Please add a note.</Box>
+        <Box> Please add a note.</Box>
       ) : (
-        <Box display="flex"  bg={"gray.100"} p={4}>
+        <Box display="flex" flexWrap={"wrap"} alignItems="center" justifyContent="center" bg={"gray.100"} p={4}>
           {notes.map((note) => (
             <Flex
               key={note._id}
